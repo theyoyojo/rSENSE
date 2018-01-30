@@ -1,4 +1,6 @@
 Rsense::Application.routes.draw do
+  resources :achievements
+
   devise_for :users, controllers: { omniauth_callbacks: 'omniauth_callbacks', registrations: 'registrations', passwords: 'passwords', confirmations: 'confirmations' }
 
   get '/users/:id/contributions' => 'users#contributions'

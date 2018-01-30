@@ -1,0 +1,24 @@
+/*
+  Place all the styles related to the matching controller here.
+  They will automatically be included in application.css.
+*/
+
+@import url('https://fonts.googleapis.com/css?family=Rubik+Mono+One');
+
+h1 {
+  font-size: 3em;
+  font-family: 'Rubik Mono One', sans-serif;
+}
+
+td {
+  padding: 3px;
+}
+
+td.ach_name {
+  font-family: 'Rubik Mono One', sans-serif;
+  width: 30%;
+}
+
+td.ach_points {
+  width: 20%;
+}

@@ -24,6 +24,7 @@ class User < ActiveRecord::Base
   has_many :tutorials
   has_many :news
   has_many :likes
+  has_many :achievements, :join_table => "achievements_table", :class_name => "Achievement"
 
   def sanitize_user
     self.name = sanitize name, tags: %w()

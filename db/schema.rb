@@ -11,7 +11,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170403144606) do
+ActiveRecord::Schema.define(version: 20180130224929) do
+
+  create_table "achievements", force: true do |t|
+    t.string   "name"
+    t.decimal  "points"
+    t.string   "description"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "achievements_users", id: false, force: true do |t|
+    t.integer "achievement_id"
+    t.integer "user_id"
+    t.integer "count"
+  end
 
   create_table "contrib_keys", force: true do |t|
     t.string   "name",       null: false

@@ -1,0 +1,30 @@
+<%= stylesheet_link_tag "achievements" %>
+<h1>iSense Achievements</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Points</th>
+      <th>Description</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @achievements.each do |achievement| %>
+      <tr>
+        <td class="ach_name"><%= achievement.name %></td>
+        <td><%= achievement.points %></td>
+        <td class="ach_points"><%= achievement.description %></td>
+        <td><%= link_to 'Details', achievement %></td>
+        <td><%= link_to 'Configure', edit_achievement_path(achievement) %></td>
+        <td><%= link_to 'Eliminate', achievement, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Achievement', new_achievement_path %>
