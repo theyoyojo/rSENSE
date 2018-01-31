@@ -4,6 +4,7 @@ class CreateAchievementsUsersTable < ActiveRecord::Migration
       t.integer :achievement_id
       t.integer :user_id
       t.integer :count
+      t.timestamps
     end
   end
   def down

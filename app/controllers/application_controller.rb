@@ -208,6 +208,13 @@ class ApplicationController < ActionController::Base
     devise_parameter_sanitizer.for(:sign_in) { |u| u.permit(:login, :name, :email, :password, :remember_me) }
     devise_parameter_sanitizer.for(:account_update) { |u| u.permit(:name, :email, :password, :password_confirmation, :current_password, :bio, :admin) }
   end
+
+  def achievement(user_id,achievement_id)
+    puts '@@@@@@@@@@@@@@'
+    puts user_id
+    puts achievement_id
+    puts '!@!@!@!@!@!@!'
+  end
 end
 
 class UserError < RuntimeError

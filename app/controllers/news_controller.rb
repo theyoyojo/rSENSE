@@ -6,6 +6,10 @@ class NewsController < ApplicationController
   include ApplicationHelper
 
   def index
+    if not current_user.nil?
+      # Achievement: Informed, ID: 1
+      achievement(current_user.id,1)
+    end
     if current_user.try(:admin)
       @news = News.order('created_at DESC')
     else
