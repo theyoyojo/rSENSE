@@ -24,7 +24,7 @@ class User < ActiveRecord::Base
   has_many :tutorials
   has_many :news
   has_many :likes
-  has_many :achievements_users , class_name: AchievementsUsers
+  has_many :achievements_users , class_name: AchievementsUser
   has_many :achievements, :through => :achievements_users
 
   def sanitize_user

@@ -209,12 +209,28 @@ class ApplicationController < ActionController::Base
     devise_parameter_sanitizer.for(:account_update) { |u| u.permit(:name, :email, :password, :password_confirmation, :current_password, :bio, :admin) }
   end
 
-  def achievement(user_id,achievement_id)
-    puts '@@@@@@@@@@@@@@'
-    puts user_id
-    puts achievement_id
-    puts '!@!@!@!@!@!@!'
+  # Call this function to increment an achievement/user association
+  def achievement(user_id,achievement_id_or_name)
+
+    # Is Param 2 the id or name of an achievement?
+    if achievement_id_or_name.is_a?(String)
+      # If it is the name, use it to get the id
+      achievement_id = Achievement.find_by_name(achievement_id_or_name).id
+    else 
+      # Otherwise, just save the id
+      achievement_id = achievement_id_or_name
+    end 
+
+    user =  User.find(user_id)
+    # If the user does not have any record of the achievement, initialize it as 0
+    if not user.achievements.exists?(achievement_id)
+      user.achievements << Achievement.find(achievement_id)
+    end
+
+    user.achievements_users.find_by(achievement_id).increment("count").save
+
   end
+
 end
 
 class UserError < RuntimeError
